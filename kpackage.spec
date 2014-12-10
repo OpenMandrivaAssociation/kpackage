@@ -1,0 +1,76 @@
+%define major 5
+%define libname %mklibname KF5Package %{major}
+%define devname %mklibname KF5Package -d
+%define debug_package %{nil}
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define snapshot 20141210
+
+Name: kpackage
+Version: 0.0.1
+Release: 0.%{snapshot}.1
+# git clone git://anongit.kde.org/kpackage
+Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%{version}/%{name}-%{version}.tar.xz
+Patch0: kpackage-compile.patch
+Summary: Library to load and install packages of non binary files as they were a plugin
+URL: http://kde.org/
+License: GPL
+Group: System/Libraries
+BuildRequires: cmake >= 2.8.12.2-3
+BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5Test)
+BuildRequires: cmake(KF5Archive)
+BuildRequires: cmake(KF5DocTools)
+BuildRequires: cmake(Gettext)
+BuildRequires: cmake(PythonInterp)
+BuildRequires: cmake(KF5I18n)
+BuildRequires: cmake(KF5Config)
+BuildRequires: cmake(KF5CoreAddons)
+BuildRequires: qmake5
+BuildRequires: extra-cmake-modules5
+BuildRequires: ninja
+Requires: %{libname} = %{EVRD}
+
+%description
+Library to load and install packages of non binary files as they were a plugin
+
+%package -n %{libname}
+Summary: Library to load and install packages of non binary files as they were a plugin
+Group: System/Libraries
+Requires: %{name} = %{EVRD}
+
+%description -n %{libname}
+Library to load and install packages of non binary files as they were a plugin
+
+%package -n %{devname}
+Summary: Development files for %{name}
+Group: Development/C
+Requires: %{libname} = %{EVRD}
+
+%description -n %{devname}
+Development files (Headers etc.) for %{name}.
+
+%prep
+%setup -q
+%apply_patches
+%cmake -G Ninja \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
+%build
+ninja -C build
+
+%install
+DESTDIR="%{buildroot}" ninja -C build install
+
+%files
+%{_bindir}/kpackagetool
+%{_datadir}/kservicetypes5/kpackage-packagestructure.desktop
+%{_mandir}/man1/kpackagetool.1.xz
+
+%files -n %{libname}
+%{_libdir}/*.so.%{major}
+%{_libdir}/*.so.5.4.0
+
+%files -n %{devname}
+%{_includedir}/*
+%{_libdir}/*.so
+%{_libdir}/cmake/KF5Package
