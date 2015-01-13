@@ -3,13 +3,17 @@
 %define devname %mklibname KF5Package -d
 %define debug_package %{nil}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-%define snapshot 20141210
+%define snapshot %{nil}
 
 Name: kpackage
-Version: 0.0.1
+Version: 5.6.0
 Release: 0.%{snapshot}.1
+%if "%{snapshot}" != ""
 # git clone git://anongit.kde.org/kpackage
-Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%{version}/%{name}-%{version}.tar.xz
+Source0: %{name}-%{snapshot}.tar.xz
+%else
+Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
+%endif
 Patch0: kpackage-compile.patch
 Summary: Library to load and install packages of non binary files as they were a plugin
 URL: http://kde.org/
@@ -60,15 +64,19 @@ ninja -C build
 
 %install
 DESTDIR="%{buildroot}" ninja -C build install
+%find_lang lib%{name}5
 
-%files
-%{_bindir}/kpackagetool
+%files -f lib%{name}5.lang
+%{_bindir}/kpackagetool5
 %{_datadir}/kservicetypes5/kpackage-packagestructure.desktop
 %{_mandir}/man1/kpackagetool.1.xz
+%lang(nl) %{_mandir}/nl/man1/kpackagetool.1.xz
+%lang(sv) %{_mandir}/sv/man1/kpackagetool.1.xz
+%lang(uk) %{_mandir}/uk/man1/kpackagetool.1.xz
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
-%{_libdir}/*.so.5.4.0
+%{_libdir}/*.so.%{version}
 
 %files -n %{devname}
 %{_includedir}/*
