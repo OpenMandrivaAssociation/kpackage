@@ -6,8 +6,8 @@
 %define snapshot %{nil}
 
 Name: kpackage
-Version: 5.6.0
-Release: 0.%{snapshot}.1
+Version: 5.7.0
+Release: 1.%{snapshot}.1
 %if "%{snapshot}" != ""
 # git clone git://anongit.kde.org/kpackage
 Source0: %{name}-%{snapshot}.tar.xz
@@ -69,10 +69,12 @@ DESTDIR="%{buildroot}" ninja -C build install
 %files -f lib%{name}5.lang
 %{_bindir}/kpackagetool5
 %{_datadir}/kservicetypes5/kpackage-packagestructure.desktop
-%{_mandir}/man1/kpackagetool.1.xz
-%lang(nl) %{_mandir}/nl/man1/kpackagetool.1.xz
-%lang(sv) %{_mandir}/sv/man1/kpackagetool.1.xz
-%lang(uk) %{_mandir}/uk/man1/kpackagetool.1.xz
+%{_mandir}/man1/kpackagetool5.1.xz
+%lang(de) %{_mandir}/de/man1/kpackagetool5.1.xz
+%lang(nl) %{_mandir}/nl/man1/kpackagetool5.1.xz
+%lang(pt_BR) %{_mandir}/pt_BR/man1/kpackagetool5.1.xz
+%lang(sv) %{_mandir}/sv/man1/kpackagetool5.1.xz
+%lang(uk) %{_mandir}/uk/man1/kpackagetool5.1.xz
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
