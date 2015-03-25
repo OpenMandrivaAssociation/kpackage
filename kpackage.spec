@@ -6,7 +6,7 @@
 %define snapshot %{nil}
 
 Name: kpackage
-Version: 5.7.0
+Version: 5.8.0
 Release: 1.%{snapshot}.1
 %if "%{snapshot}" != ""
 # git clone git://anongit.kde.org/kpackage
@@ -35,7 +35,7 @@ BuildRequires: ninja
 Requires: %{libname} = %{EVRD}
 
 %description
-Library to load and install packages of non binary files as they were a plugin
+Library to load and install packages of non binary files as they were a plugin.
 
 %package -n %{libname}
 Summary: Library to load and install packages of non binary files as they were a plugin
@@ -43,7 +43,7 @@ Group: System/Libraries
 Requires: %{name} = %{EVRD}
 
 %description -n %{libname}
-Library to load and install packages of non binary files as they were a plugin
+Library to load and install packages of non binary files as they were a plugin.
 
 %package -n %{devname}
 Summary: Development files for %{name}
