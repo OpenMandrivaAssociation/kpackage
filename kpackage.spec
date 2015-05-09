@@ -67,12 +67,13 @@ Development files (Headers etc.) for %{name}.
 %files -f lib%{name}5.lang
 %{_bindir}/kpackagetool5
 %{_datadir}/kservicetypes5/kpackage-packagestructure.desktop
-%{_mandir}/man1/kpackagetool5.1.xz
-%lang(de) %{_mandir}/de/man1/kpackagetool5.1.xz
-%lang(nl) %{_mandir}/nl/man1/kpackagetool5.1.xz
-%lang(pt_BR) %{_mandir}/pt_BR/man1/kpackagetool5.1.xz
-%lang(sv) %{_mandir}/sv/man1/kpackagetool5.1.xz
-%lang(uk) %{_mandir}/uk/man1/kpackagetool5.1.xz
+%{_mandir}/man1/*
+%lang(ca) %{_mandir}//ca/man1/*
+%lang(de) %{_mandir}/de/man1/*
+%lang(nl) %{_mandir}/nl/man1/*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/*
+%lang(sv) %{_mandir}/sv/man1/*
+%lang(uk) %{_mandir}/uk/man1/*
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
