@@ -7,19 +7,20 @@
 
 Name: kpackage
 Version: 5.10.0
-Release: 1.%{snapshot}.1
 %if "%{snapshot}" != ""
+Release: 1.%{snapshot}.1
 # git clone git://anongit.kde.org/kpackage
 Source0: %{name}-%{snapshot}.tar.xz
 %else
-Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
+Release: 1
+Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 %endif
 Patch0: kpackage-compile.patch
 Summary: Library to load and install packages of non binary files as they were a plugin
 URL: http://kde.org/
 License: GPL
 Group: System/Libraries
-BuildRequires: cmake >= 2.8.12.2-3
+BuildRequires: cmake(ECM)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Test)
 BuildRequires: cmake(KF5Archive)
@@ -29,9 +30,6 @@ BuildRequires: cmake(PythonInterp)
 BuildRequires: cmake(KF5I18n)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5CoreAddons)
-BuildRequires: qmake5
-BuildRequires: extra-cmake-modules5
-BuildRequires: ninja
 Requires: %{libname} = %{EVRD}
 
 %description
@@ -56,14 +54,14 @@ Development files (Headers etc.) for %{name}.
 %prep
 %setup -q
 %apply_patches
-%cmake -G Ninja \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+%cmake_kde5
 
 %build
-ninja -C build
+%ninja -C build
 
 %install
-DESTDIR="%{buildroot}" ninja -C build install
+%ninja_install -C build
+
 %find_lang lib%{name}5
 
 %files -f lib%{name}5.lang
