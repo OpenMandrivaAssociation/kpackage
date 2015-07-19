@@ -12,7 +12,7 @@ Release: 1.%{snapshot}.1
 # git clone git://anongit.kde.org/kpackage
 Source0: %{name}-%{snapshot}.tar.xz
 %else
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 %endif
 Patch0: kpackage-compile.patch
