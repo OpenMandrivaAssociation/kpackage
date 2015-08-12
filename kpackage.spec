@@ -6,13 +6,13 @@
 %define snapshot %{nil}
 
 Name: kpackage
-Version: 5.12.0
+Version: 5.13.0
 %if "%{snapshot}" != ""
 Release: 1.%{snapshot}.1
 # git clone git://anongit.kde.org/kpackage
 Source0: %{name}-%{snapshot}.tar.xz
 %else
-Release: 2
+Release: 1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 %endif
 Patch0: kpackage-compile.patch
