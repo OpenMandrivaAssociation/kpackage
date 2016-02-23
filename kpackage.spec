@@ -15,7 +15,6 @@ Source0: %{name}-%{snapshot}.tar.xz
 Release:	1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 %endif
-Patch0: kpackage-compile.patch
 Summary: Library to load and install packages of non binary files as they were a plugin
 URL: http://kde.org/
 License: GPL
