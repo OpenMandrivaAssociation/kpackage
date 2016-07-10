@@ -67,8 +67,9 @@ Development files (Headers etc.) for %{name}.
 %{_bindir}/kpackagetool5
 %{_datadir}/kservicetypes5/kpackage-packagestructure.desktop
 %{_mandir}/man1/*
-%lang(ca) %{_mandir}//ca/man1/*
+%lang(ca) %{_mandir}/ca/man1/*
 %lang(de) %{_mandir}/de/man1/*
+%lang(it) %{_mandir}/it/man1/*
 %lang(nl) %{_mandir}/nl/man1/*
 %lang(pt_BR) %{_mandir}/pt_BR/man1/*
 %lang(sv) %{_mandir}/sv/man1/*
