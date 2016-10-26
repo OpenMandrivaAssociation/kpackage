@@ -12,7 +12,7 @@ Release:	1
 # git clone git://anongit.kde.org/kpackage
 Source0: %{name}-%{snapshot}.tar.xz
 %else
-Release:	1
+Release:	2
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 %endif
 Summary: Library to load and install packages of non binary files as they were a plugin
@@ -30,6 +30,7 @@ BuildRequires: cmake(KF5I18n)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5CoreAddons)
 Requires: %{libname} = %{EVRD}
+Requires: appstream
 
 %description
 Library to load and install packages of non binary files as they were a plugin.
