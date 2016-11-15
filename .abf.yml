@@ -1,4 +1,2 @@
-removed_sources:
-  kpackage-5.13.0.tar.xz: a42d436e38bf3bbfa29bcef51df1d63028c232de
 sources:
-  kpackage-5.27.0.tar.xz: 74d92572bef2fb5f5dab978ff9b97033959de3f6
+  kpackage-5.28.0.tar.xz: 64436f47853042ae58ff9a59f0ea16e6baa5bd33

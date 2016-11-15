@@ -6,13 +6,13 @@
 %define snapshot %{nil}
 
 Name: kpackage
-Version:	5.27.0
+Version:	5.28.0
 %if "%{snapshot}" != ""
 Release:	1
 # git clone git://anongit.kde.org/kpackage
 Source0: %{name}-%{snapshot}.tar.xz
 %else
-Release:	2
+Release:	1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 %endif
 Summary: Library to load and install packages of non binary files as they were a plugin
@@ -70,6 +70,7 @@ Development files (Headers etc.) for %{name}.
 %{_mandir}/man1/*
 %lang(ca) %{_mandir}/ca/man1/*
 %lang(de) %{_mandir}/de/man1/*
+%lang(es) %{_mandir}/es/man1/*
 %lang(it) %{_mandir}/it/man1/*
 %lang(nl) %{_mandir}/nl/man1/*
 %lang(pt_BR) %{_mandir}/pt_BR/man1/*
