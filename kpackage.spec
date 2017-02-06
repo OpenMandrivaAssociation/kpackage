@@ -6,7 +6,7 @@
 %define snapshot %{nil}
 
 Name: kpackage
-Version:	5.30.0
+Version:	5.31.0
 %if "%{snapshot}" != ""
 Release:	1
 # git clone git://anongit.kde.org/kpackage
