@@ -6,7 +6,7 @@
 %define snapshot %{nil}
 
 Name: kpackage
-Version:	5.33.0
+Version:	5.34.0
 %if "%{snapshot}" != ""
 Release:	1
 # git clone git://anongit.kde.org/kpackage
@@ -74,6 +74,7 @@ Development files (Headers etc.) for %{name}.
 %lang(es) %{_mandir}/es/man1/*
 %lang(it) %{_mandir}/it/man1/*
 %lang(nl) %{_mandir}/nl/man1/*
+%lang(pt) %{_mandir}/pt/man1/*
 %lang(pt_BR) %{_mandir}/pt_BR/man1/*
 %lang(sv) %{_mandir}/sv/man1/*
 %lang(uk) %{_mandir}/uk/man1/*
