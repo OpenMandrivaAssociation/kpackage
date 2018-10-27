@@ -22,6 +22,7 @@ Group: System/Libraries
 BuildRequires: cmake(ECM)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Test)
+BuildRequires: pkgconfig(Qt5DBus)
 BuildRequires: cmake(KF5Archive)
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(Gettext)
