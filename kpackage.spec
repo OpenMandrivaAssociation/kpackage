@@ -3,18 +3,11 @@
 %define devname %mklibname KF5Package -d
 %define debug_package %{nil}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-%define snapshot %{nil}
 
 Name: kpackage
 Version:	5.56.0
-%if "%{snapshot}" != ""
-Release:	1
-# git clone git://anongit.kde.org/kpackage
-Source0: %{name}-%{snapshot}.tar.xz
-%else
-Release:	1
+Release:	2
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-%endif
 Summary: Library to load and install packages of non binary files as they were a plugin
 URL: http://kde.org/
 License: GPL
