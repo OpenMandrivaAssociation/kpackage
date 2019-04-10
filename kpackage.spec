@@ -5,8 +5,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: kpackage
-Version:	5.56.0
-Release:	2
+Version:	5.57.0
+Release:	1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: Library to load and install packages of non binary files as they were a plugin
 URL: http://kde.org/
@@ -23,6 +23,8 @@ BuildRequires: cmake(PythonInterp)
 BuildRequires: cmake(KF5I18n)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5CoreAddons)
+# For QCH format docs
+BuildRequires: qt5-assistant
 Requires: %{libname} = %{EVRD}
 Requires: appstream
 
@@ -44,6 +46,14 @@ Requires: %{libname} = %{EVRD}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
+
+%package -n %{name}-devel-docs
+Summary: Developer documentation for %{name} for use with Qt Assistant
+Group: Documentation
+Suggests: %{devname} = %{EVRD}
+
+%description -n %{name}-devel-docs
+Developer documentation for %{name} for use with Qt Assistant
 
 %prep
 %setup -q
@@ -82,3 +92,6 @@ Development files (Headers etc.) for %{name}.
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5Package
+
+%files -n %{name}-devel-docs
+%{_docdir}/qt5/*.{tags,qch}
