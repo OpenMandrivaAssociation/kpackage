@@ -5,7 +5,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: kpackage
-Version:	5.59.0
+Version:	5.60.0
 Release:	1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: Library to load and install packages of non binary files as they were a plugin
@@ -75,7 +75,7 @@ Developer documentation for %{name} for use with Qt Assistant
 %{_datadir}/kservicetypes5/kpackage-generic.desktop
 %{_datadir}/kservicetypes5/kpackage-genericqml.desktop
 %{_mandir}/man1/*
-%{_sysconfdir}/xdg/kpackage.categories
+%{_datadir}/qlogging-categories5/kpackage.categories
 %lang(ca) %{_mandir}/ca/man1/*
 %lang(de) %{_mandir}/de/man1/*
 %lang(es) %{_mandir}/es/man1/*
