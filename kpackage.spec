@@ -5,7 +5,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: kpackage
-Version:	5.71.0
+Version:	5.72.0
 Release:	1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: Library to load and install packages of non binary files as they were a plugin
@@ -66,24 +66,15 @@ Developer documentation for %{name} for use with Qt Assistant
 %install
 %ninja_install -C build
 
-%find_lang lib%{name}5
+%find_lang lib%{name}5 --all-name --with-man
 
 %files -f lib%{name}5.lang
 %{_bindir}/kpackagetool5
 %{_datadir}/kservicetypes5/kpackage-packagestructure.desktop
 %{_datadir}/kservicetypes5/kpackage-generic.desktop
 %{_datadir}/kservicetypes5/kpackage-genericqml.desktop
-%{_mandir}/man1/*
 %{_datadir}/qlogging-categories5/kpackage.categories
-%lang(ca) %{_mandir}/ca/man1/*
-%lang(de) %{_mandir}/de/man1/*
-%lang(es) %{_mandir}/es/man1/*
-%lang(it) %{_mandir}/it/man1/*
-%lang(nl) %{_mandir}/nl/man1/*
-%lang(pt) %{_mandir}/pt/man1/*
-%lang(pt_BR) %{_mandir}/pt_BR/man1/*
-%lang(sv) %{_mandir}/sv/man1/*
-%lang(uk) %{_mandir}/uk/man1/*
+%{_mandir}/man1/*.1*
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
