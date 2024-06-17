@@ -5,7 +5,7 @@
 
 Name: kpackage
 Version:	5.116.0
-Release:	2
+Release:	3
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: Library to load and install packages of non binary files as they were a plugin
 URL: http://kde.org/
@@ -26,7 +26,7 @@ BuildRequires: cmake(KF5CoreAddons)
 BuildRequires: doxygen
 BuildRequires: qt5-assistant
 Requires: %{libname} = %{EVRD}
-Requires: appstream
+Requires: appstream >= 1.0.3
 
 %description
 Library to load and install packages of non binary files as they were a plugin.
